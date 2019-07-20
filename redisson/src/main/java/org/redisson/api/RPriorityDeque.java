@@ -16,8 +16,10 @@
 package org.redisson.api;
 
 import java.util.Deque;
+import java.util.stream.Stream;
 
 /**
+ * Redis based priority deque.
  * 
  * @author Nikita Koksharov
  *
@@ -25,4 +27,11 @@ import java.util.Deque;
  */
 public interface RPriorityDeque<V> extends Deque<V>, RPriorityQueue<V> {
 
+    /**
+     * Returns stream of elements contained in this deque in reverse order
+     *
+     * @return stream of elements in reverse order
+     */
+    Stream<V> descendingStream();
+    
 }

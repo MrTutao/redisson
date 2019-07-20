@@ -15,11 +15,12 @@
  */
 package org.redisson.reactive;
 
-import org.reactivestreams.Publisher;
+import java.util.concurrent.Callable;
+
 import org.redisson.api.RFuture;
 import org.redisson.command.CommandAsyncExecutor;
 
-import reactor.fn.Supplier;
+import reactor.core.publisher.Mono;
 
 /**
  *
@@ -28,6 +29,6 @@ import reactor.fn.Supplier;
  */
 public interface CommandReactiveExecutor extends CommandAsyncExecutor {
 
-    <R> Publisher<R> reactive(Supplier<RFuture<R>> supplier);
+    <R> Mono<R> reactive(Callable<RFuture<R>> supplier);
 
 }

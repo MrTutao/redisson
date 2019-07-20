@@ -18,7 +18,7 @@ package org.redisson.api;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.reactivestreams.Publisher;
+import reactor.core.publisher.Mono;
 
 /**
  * Reactive interface for RSetCache object
@@ -80,7 +80,7 @@ public interface RSetCacheReactive<V> extends RCollectionReactive<V>, RDestroyab
      * @return <code>true</code> if value has been added. <code>false</code>
      *          if value already been in collection.
      */
-    Publisher<Boolean> add(V value, long ttl, TimeUnit unit);
+    Mono<Boolean> add(V value, long ttl, TimeUnit unit);
 
     /**
      * Returns the number of elements in cache.
@@ -89,13 +89,13 @@ public interface RSetCacheReactive<V> extends RCollectionReactive<V>, RDestroyab
      *
      */
     @Override
-    Publisher<Integer> size();
+    Mono<Integer> size();
 
     /**
      * Read all elements at once
      *
      * @return values
      */
-    Publisher<Set<V>> readAll();
+    Mono<Set<V>> readAll();
     
 }
